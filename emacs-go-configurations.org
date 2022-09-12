@@ -1,0 +1,29 @@
+#+TITLE: GOLANG Programming in Emacs
+* Introduction
+  This configuration file contains setup of Emacs packages for golang. This is a follow-up after java-configurations. 
+
+** Install go-mode
+
+#+begin_src emacs-lisp
+(use-package go-mode
+:ensure t
+:mode "\\.go^\\'"
+:custom
+(tab-width 4)
+(company-idle-delay 0.3)
+(gofmt-command "goimports")
+)
+
+(add-hook 'before-save-hook 'gofmt-before-save)
+   #+end_src
+
+** Install flymake-go
+#+begin_src emacs-lisp
+(use-package flymake-go :ensure t)
+#+end_src
+
+** install flycheck
+
+#+begin_src emacs-lisp
+(use-package flycheck :ensure t)
+#+end_src

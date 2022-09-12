@@ -7,6 +7,7 @@
 
 ;; All the settings and package installation is set in configuration.org
 (org-babel-load-file "~/.emacs.d/emacs-configuration.org")
+(org-babel-load-file "~/.emacs.d/emacs-go-configurations.org")
 
 (add-hook 'emacs-startup-hook
   (lambda ()
@@ -27,3 +28,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(global-display-line-numbers-mode)
