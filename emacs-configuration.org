@@ -386,9 +386,19 @@ You can start LSP server in a java project by using ~C-c l s s~. Once you type ~
 ** LSP Java
 This is the package that handles server installation and session management.
 #+begin_src  emacs-lisp
-(use-package lsp-java 
-:ensure t
-:config (add-hook 'java-mode-hook 'lsp))
+  (use-package lsp-java
+	:ensure t
+	:init
+	(add-hook 'java-mode-hook #'lsp)
+	:config
+	(setq lsp-java-format-on-type-enabled nil)
+	(add-hook 'java-mode-hook #'lsp-lens-mode)
+	(setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml")
+	(setq lsp-java-format-settings-profile '"GoogleStyle"))
+
+;;	(use-package lsp-java 
+;;	:ensure t
+;;	:config (add-hook 'java-mode-hook 'lsp))
 #+end_src
 
 For setting the themes and fonts
