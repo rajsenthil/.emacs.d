@@ -56,3 +56,12 @@ build/
 ### VS Code ###
 .vscode/
 
+.cache/
+.dap-breakpoints
+.lsp-session-v1
+auto-save-list/
+cache/
+elpa/
+*.el
+recentf
+
