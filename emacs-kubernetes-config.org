@@ -1,0 +1,23 @@
+* Kubernetes file mode in Emacs
+
+* Features
+* Inherite yaml-mode
+* Support yasnippet
+* Go to documents site
+
+** Setup yasnippet
+
+#+begin_src emacs-lisp
+  (use-package yasnippet :ensure t)
+   (yas-global-mode 1)
+#+end_src
+
+** Setup k8s-mode
+
+#+begin_src emacs-lisp
+  (use-package k8s-mode
+  :ensure t
+  :hook (k8s-mode . yas-minor-mode))
+#+end_src
+
+
