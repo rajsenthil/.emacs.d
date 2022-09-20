@@ -8,13 +8,16 @@
 
    `go install golang.org/x/tools/gopls@latest`
 
+  `go install golang.org/x/tools/cmd/goimports@latest`
+   
  * Configuring LSP Mode
 
 ** Loading LSP Mode in .emacs
 
 #+begin_src emacs-lisp
+  (use-package go-mode :ensure t)
   (use-package lsp-mode :ensure t)
-  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook 'lsp-deferred)
 
   ;; Set up before-save hooks to format buffer and add/delete imports.
   ;; Make sure you don't have other gofmt/goimports hooks enabled.
@@ -35,6 +38,6 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
 	 ("gopls.staticcheck" t t)))
-  Note that after changing settings you must restart gopls using e.g. M-x lsp-restart-workspace.
-
  #+end_src
+
+   Note that after changing settings you must restart gopls using e.g. M-x lsp-restart-workspace.
