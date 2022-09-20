@@ -1,2 +1,8 @@
 # java_emacs
 Tutorial and Configuration to setup java development for emacs. Read [[emacs-configuration.org]] for most of the setup. File [[init.el]] loads [[emacs-configuration.org]]
+
+Use the command
+
+#+begin_src shell
+git clone git@github.com:rajsenthil/.emacs.d.git
+#+end_src
