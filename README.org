@@ -4,5 +4,5 @@ Tutorial and Configuration to setup java development for emacs. Read [[emacs-con
 Use the command
 
 #+begin_src shell
-git clone git@github.com:rajsenthil/.emacs.d.git
+git clone git@github.com:rajsenthil/.emacs.d.git ~/.emacs.d
 #+end_src
