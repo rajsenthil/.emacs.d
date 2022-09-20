@@ -2,28 +2,39 @@
 * Introduction
   This configuration file contains setup of Emacs packages for golang. This is a follow-up after java-configurations. 
 
-** Install go-mode
+ * Pre-requisite
+
+   Install gopls command
+
+   `go install golang.org/x/tools/gopls@latest`
+
+ * Configuring LSP Mode
+
+** Loading LSP Mode in .emacs
 
 #+begin_src emacs-lisp
-(use-package go-mode
-:ensure t
-:mode "\\.go^\\'"
-:custom
-(tab-width 4)
-(company-idle-delay 0.3)
-(gofmt-command "goimports")
-)
+  (use-package lsp-mode :ensure t)
+  (add-hook 'go-mode-hook #'lsp-deferred)
 
-(add-hook 'before-save-hook 'gofmt-before-save)
-   #+end_src
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+  (defun lsp-go-install-save-hooks ()
+	(add-hook 'before-save-hook #'lsp-format-buffer t t)
+	(add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  #+end_src
+  
+  Configuring gopls via LSP Mode
+  See settings for information about available gopls settings.
 
-** Install flymake-go
-#+begin_src emacs-lisp
-(use-package flymake-go :ensure t)
-#+end_src
+  Stable gopls settings have corresponding configuration variables in lsp-mode. For example, (setq lsp-gopls-use-placeholders nil) will disable placeholders in completion snippets. See lsp-go for a list of available variables.
 
-** install flycheck
+  Experimental settings can be configured via lsp-register-custom-settings:
 
-#+begin_src emacs-lisp
-(use-package flycheck :ensure t)
-#+end_src
+  #+begin_src emacs-lisp
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+	 ("gopls.staticcheck" t t)))
+  Note that after changing settings you must restart gopls using e.g. M-x lsp-restart-workspace.
+
+ #+end_src
