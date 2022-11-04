@@ -67,7 +67,7 @@ Here, I add some basic emacs setup like loading the language, disabling the tool
   (setq whitespace-line-column 1000) 
 
   ;; global line number mode
-  (global-linum-mode t)
+;;  (global-linum-mode t)
   ;; Enable soft-wrap
   (global-visual-line-mode 1)
 
@@ -492,7 +492,7 @@ When switch-window is enabled, user can use the below five keys:
 ** Show column number
 #+begin_src emacs-lisp
   ;;(set display-line-numbers-mode t)
-  ;;(setq column-number-mode t)
+  (setq column-numer-mode t)
 #+end_src
 
 ** Moving lines up and down
