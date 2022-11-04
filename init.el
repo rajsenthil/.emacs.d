@@ -9,7 +9,7 @@
 (org-babel-load-file "~/.emacs.d/emacs-configuration.org")
 (org-babel-load-file "~/.emacs.d/emacs-go-configurations.org")
 (org-babel-load-file "~/.emacs.d/emacs-kubernetes-config.org")
-(org-babel-load-file "~/.emacs.d/emacs-react-configurations.org")
+(org-babel-load-file "~/.emacs.d/emacs-typescript-configurations.org")
 
 (add-hook 'emacs-startup-hook
   (lambda ()
