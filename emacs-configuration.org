@@ -1,3 +1,4 @@
+
 #+TITLE: Java Programming in Emacs
 * Introduction
   This configuration file contains setup of Emacs packages for Language Server Protocol (LSP). I will use ~use-package~ for package management.
@@ -423,13 +424,15 @@ For setting the themes and fonts
 ** Install Source Code Pro font
 
 #+begin_src emacs-lisp
-				;; Set default font
-			(set-face-attribute
-			 'default nil
-			 :family "Source Code Pro"
-			 :height 120
-			 :weight 'normal
-			 )
+					;; Set default font
+				(set-face-attribute
+				 'default nil
+  			     :family "Source Code Pro"				 
+  ;;  			   :family "Ubuntu Condensed"
+  ;;			   :family "Fira Code"
+				 :height 120
+				 :weight 'normal
+				 )
   
 #+end_src
 
