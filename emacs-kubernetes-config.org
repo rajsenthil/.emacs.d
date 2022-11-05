@@ -10,7 +10,7 @@
 #+begin_src emacs-lisp
   (use-package yasnippet :ensure t)
    (yas-global-mode 1)
-  (use package auto-complete :ensure t)
+  (use-package auto-complete :ensure t)
 #+end_src
 
 ** Setup k8s-mode

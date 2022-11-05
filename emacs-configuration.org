@@ -53,52 +53,54 @@ In some operating systems Emacs does not load environment variables properly. Th
 Here, I add some basic emacs setup like loading the language, disabling the toolbar, setting up backup directory etc. I have added comments to each setting.
 
 #+BEGIN_SRC emacs-lisp
-;; Disable annoying ring-bell when backspace key is pressed in certain situations
-(setq ring-bell-function 'ignore)
+  ;; Disable annoying ring-bell when backspace key is pressed in certain situations
+  (setq ring-bell-function 'ignore)
 
-;; Disable scrollbar and toolbar
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
+  ;; Disable scrollbar and toolbar
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
 
-;; Set language environment to UTF-8
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
+  ;; Set language environment to UTF-8
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
 
-;; Longer whitespace, otherwise syntax highlighting is limited to default column
-(setq whitespace-line-column 1000) 
+  ;; Longer whitespace, otherwise syntax highlighting is limited to default column
+  (setq whitespace-line-column 1000) 
 
-;; Enable soft-wrap
-(global-visual-line-mode 1)
+  ;; global line number mode
+;;  (global-linum-mode t)
+  ;; Enable soft-wrap
+  (global-visual-line-mode 1)
 
-;; Maintain a list of recent files opened
-(recentf-mode 1)            
-(setq recentf-max-saved-items 50)
+  ;; Maintain a list of recent files opened
+  (recentf-mode 1)            
+  (setq recentf-max-saved-items 50)
 
-;; Move all the backup files to specific cache directory
-;; This way you won't have annoying temporary files starting with ~(tilde) in each directory
-;; Following setting will move temporary files to specific folders inside cache directory in EMACS_DIR
+  ;; Move all the backup files to specific cache directory
+  ;; This way you won't have annoying temporary files starting with ~(tilde) in each directory
+  ;; Following setting will move temporary files to specific folders inside cache directory in EMACS_DIR
 
-(setq user-cache-directory (concat EMACS_DIR "cache"))
-(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
-      url-history-file (expand-file-name "url/history" user-cache-directory)
-      auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
-      projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
+  (setq user-cache-directory (concat EMACS_DIR "cache"))
+  (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-cache-directory)))
+		url-history-file (expand-file-name "url/history" user-cache-directory)
+		auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-cache-directory)
+		projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-cache-directory))
 
-;; Org-mode issue with src block not expanding
-;; This is a fix for bug in org-mode where <s TAB does not expand SRC block
-(when (version<= "9.2" (org-version))
-(require 'org-tempo))
+  ;; Org-mode issue with src block not expanding
+  ;; This is a fix for bug in org-mode where <s TAB does not expand SRC block
+  (when (version<= "9.2" (org-version))
+  (require 'org-tempo))
 
-;; Coding specific setting
+  ;; Coding specific setting
 
-;; Automatically add ending brackets and braces
-(electric-pair-mode 1)
+  ;; Automatically add ending brackets and braces
+  (electric-pair-mode 1)
 
-;; Make sure tab-width is 4 and not 8
-(setq-default tab-width 4)
+  ;; Make sure tab-width is 4 and not 8
+  (setq-default tab-width 4)
 
-;; Highlight matching brackets and braces
-(show-paren-mode 1) 
+  ;; Highlight matching brackets and braces
+  (show-paren-mode 1) 
 #+END_SRC
 
 * Looks
@@ -424,7 +426,7 @@ For setting the themes and fonts
 ** Install Source Code Pro font
 
 #+begin_src emacs-lisp
-					;; Set default font
+				;; Set default font
 				(set-face-attribute
 				 'default nil
   			     :family "Source Code Pro"				 
@@ -432,8 +434,7 @@ For setting the themes and fonts
   ;;			   :family "Fira Code"
 				 :height 120
 				 :weight 'normal
-				 )
-  
+				 )  
 #+end_src
 
 
@@ -490,9 +491,10 @@ When switch-window is enabled, user can use the below five keys:
 | "b" | Balance windows       |
 |"SPC"| Resume auto-resize    |
 
-** Show line-numbers
+** Show column number
 #+begin_src emacs-lisp
-  (display-line-numbers-mode)
+  ;;(set display-line-numbers-mode t)
+  (setq column-numer-mode t)
 #+end_src
 
 ** Moving lines up and down
@@ -534,6 +536,8 @@ When switch-window is enabled, user can use the below five keys:
 (global-set-key [\C-\S-up] 'move-text-up)
 (global-set-key [\C-\S-down] 'move-text-down)
 #+end_src
+
+
 
 * Conclusion
 Go through [[https://github.com/emacs-lsp/lsp-java#supported-commands][Supported commands]] section of lsp-java github page to see commands provided in lsp-mode. Most of these commands are available under lsp's ~C-c l~ option. I hope this configuration file was useful.
