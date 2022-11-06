@@ -429,10 +429,10 @@ For setting the themes and fonts
 				;; Set default font
 				(set-face-attribute
 				 'default nil
-  			     :family "Source Code Pro"				 
-  ;;  			   :family "Ubuntu Condensed"
+  ;;			     :family "Source Code Pro"				 
+    			   :family "Ubuntu Condensed"
   ;;			   :family "Fira Code"
-				 :height 120
+				 :height 140
 				 :weight 'normal
 				 )  
 #+end_src
@@ -537,7 +537,11 @@ When switch-window is enabled, user can use the below five keys:
 (global-set-key [\C-\S-down] 'move-text-down)
 #+end_src
 
+** load from disk if files are changes
 
+#+begin_src emacs-lisp
+  (global-auto-revert-mode t)
+#+end_src
 
 * Conclusion
 Go through [[https://github.com/emacs-lsp/lsp-java#supported-commands][Supported commands]] section of lsp-java github page to see commands provided in lsp-mode. Most of these commands are available under lsp's ~C-c l~ option. I hope this configuration file was useful.
