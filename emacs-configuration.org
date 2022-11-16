@@ -322,27 +322,27 @@ Treemacs provides UI elements used for LSP UI. Let's install lsp-treemacs and it
 	   :bind (:map lsp-mode-map
 			  ("M-9" . lsp-treemacs-errors-list)))
 
-   (use-package treemacs
- 	 :ensure t
- 	 :commands (treemacs)
- 	 :after (lsp-mode))
- 
-;;	(use-package treemacs
-;;	   :ensure t
-;;	   :after (lsp-mode)
-;;	 :config
-;;	   (setq treemacs-follow-after-init t
-;;				   treemacs-is-never-other-window t
-;;				   treemacs-width 20)
-;;	 (treemacs-follow-mode t)
-;;	 (treemacs-filewatch-mode t)
-;;	 (treemacs-git-mode 'simple)
-;;	   (treemacs-fringe-indicator-mode t)
-;;	   :hook (after-init . treemacs)
-;;	   :bind
-;;	 (:map global-map
-;;		   ("C-M-ree"   . treemacs)))
-;;
+    (use-package treemacs
+  	 :ensure t
+  	 :commands (treemacs)
+  	 :after (lsp-mode))
+  
+;; 	(use-package treemacs
+;; 	   :ensure t
+;; 	   :after (lsp-mode)
+;; 	 :config
+;; 	   (setq treemacs-follow-after-init t
+;; 				   treemacs-is-never-other-window t
+;; 				   treemacs-width 20)
+;; 	 (treemacs-follow-mode t)
+;; 	 (treemacs-filewatch-mode t)
+;; 	 (treemacs-git-mode 'simple)
+;; 	   (treemacs-fringe-indicator-mode t)
+;; 	   :hook (after-init . treemacs)
+;; 	   :bind
+;; 	 (:map global-map
+;; 		   ("C-M-ree"   . treemacs)))
+;; 
 #+end_src
 
 ** LSP UI
@@ -543,5 +543,15 @@ When switch-window is enabled, user can use the below five keys:
   (global-auto-revert-mode t)
 #+end_src
 
+** make the current line and column number visible
+
+#+begin_src emacs-lisp
+  (setq column-number-mode t)
+#+end_src
+** make treemacs visible when startup
+
+#+begin_src emacs-lisp
+  (add-hook 'emacs-startup-hook 'treemacs)
+#+end_src
 * Conclusion
 Go through [[https://github.com/emacs-lsp/lsp-java#supported-commands][Supported commands]] section of lsp-java github page to see commands provided in lsp-mode. Most of these commands are available under lsp's ~C-c l~ option. I hope this configuration file was useful.
