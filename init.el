@@ -10,6 +10,8 @@
 (org-babel-load-file "~/.emacs.d/emacs-go-configurations.org")
 (org-babel-load-file "~/.emacs.d/emacs-kubernetes-config.org")
 (org-babel-load-file "~/.emacs.d/emacs-typescript-configurations.org")
+(org-babel-load-file "~/.emacs.d/emacs-css-configurations.org")
+;;(org-babel-load-file "~/.emacs.d/emacs-misc-configurations.org")
 
 (add-hook 'emacs-startup-hook
   (lambda ()
@@ -23,7 +25,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(doom-palenight))
  '(package-selected-packages
-   '(k8s-mode lsp-java helm-lsp lsp-ui dap-mode flycheck yasnippet-snippets company quickrun which-key avy helm-swoop helm-descbinds helm projectile use-package-chords heaven-and-hell doom-themes exec-path-from-shell use-package)))
+   '(dockerfile-mode svg- svg-lib k8s-mode lsp-java helm-lsp lsp-ui dap-mode flycheck yasnippet-snippets company quickrun which-key avy helm-swoop helm-descbinds helm projectile use-package-chords heaven-and-hell doom-themes exec-path-from-shell use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

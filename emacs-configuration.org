@@ -553,5 +553,17 @@ When switch-window is enabled, user can use the below five keys:
 #+begin_src emacs-lisp
   (add-hook 'emacs-startup-hook 'treemacs)
 #+end_src
+
+** install Dockerfile-mode
+#+begin_src emacs-lisp
+(use-package dockerfile-mode :ensure t)
+#+end_src
+
+
+** Always use space for indent
+
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+end_src
 * Conclusion
 Go through [[https://github.com/emacs-lsp/lsp-java#supported-commands][Supported commands]] section of lsp-java github page to see commands provided in lsp-mode. Most of these commands are available under lsp's ~C-c l~ option. I hope this configuration file was useful.
