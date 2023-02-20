@@ -6,3 +6,8 @@ Use the command
 #+begin_src shell
 git clone git@github.com:rajsenthil/.emacs.d.git ~/.emacs.d
 #+end_src
+
+
+For custom build use the command
+
+`./configure --with-native-compilation --with-cairo --with-xwidgets --with-x-toolkit=gtk3 --with-json`
