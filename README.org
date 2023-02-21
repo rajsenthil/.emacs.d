@@ -11,3 +11,7 @@ git clone git@github.com:rajsenthil/.emacs.d.git ~/.emacs.d
 For custom build use the command
 
 `./configure --without-compress-install --with-native-compilation --with-cairo --with-xwidgets --with-x-toolkit=gtk3 --with-json`
+
+To uninstall. cd to emacs source folder and run
+`sudo make uninstall`
+
