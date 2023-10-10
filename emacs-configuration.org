@@ -426,15 +426,16 @@ For setting the themes and fonts
 ** Install Source Code Pro font
 
 #+begin_src emacs-lisp
-				;; Set default font
-				(set-face-attribute
-				 'default nil
+                ;; Set default font
+                (set-face-attribute
+                 'default nil
   ;;			     :family "Source Code Pro"				 
-    			   :family "Ubuntu Condensed"
-  ;;			   :family "Fira Code"
-				 :height 140
-				 :weight 'normal
-				 )  
+  ;;  			   :family "Ubuntu Condensed"
+  ;;               :family "Fira Code"
+                 :family "JetBrainsMono"
+                 :height 140
+                 :weight 'normal
+                 )  
 #+end_src
 
 
