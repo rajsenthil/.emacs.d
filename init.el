@@ -11,6 +11,9 @@
 (org-babel-load-file "~/.emacs.d/emacs-kubernetes-config.org")
 (org-babel-load-file "~/.emacs.d/emacs-typescript-configurations.org")
 (org-babel-load-file "~/.emacs.d/emacs-css-configurations.org")
+(org-babel-load-file "~/.emacs.d/emacs-rust-configurations.org")
+(org-babel-load-file "~/.emacs.d/emacs-python-configurations.org")
+(load "~/.emacs.d/bazel/bazel.el")
 ;;(org-babel-load-file "~/.emacs.d/emacs-misc-configurations.org")
 
 (add-hook 'emacs-startup-hook

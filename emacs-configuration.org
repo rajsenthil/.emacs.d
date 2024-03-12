@@ -433,7 +433,7 @@ For setting the themes and fonts
   ;;  			   :family "Ubuntu Condensed"
   ;;               :family "Fira Code"
                  :family "JetBrainsMono"
-                 :height 140
+                 :height 110
                  :weight 'normal
                  )  
 #+end_src
@@ -560,11 +560,100 @@ When switch-window is enabled, user can use the below five keys:
 (use-package dockerfile-mode :ensure t)
 #+end_src
 
+** install auto-complete
 
+#+begin_src emacs-lisp
+  (use-package auto-complete-config
+  :ensure auto-complete
+  :bind ("M-<tab>" . my--auto-complete)
+  :init
+  (defun my--auto-complete ()
+    (interactive)
+    (unless (boundp 'auto-complete-mode)
+      (global-auto-complete-mode 1))
+    (auto-complete))
+  )
+#+end_src
 ** Always use space for indent
 
 #+begin_src emacs-lisp
   (setq-default indent-tabs-mode nil)
 #+end_src
+
+
+** Remove invisible characters
+
+#+begin_src emacs-lisp
+  (defvar xah-replace-invisible-char-list nil
+"A alist used by `xah-replace-invisible-char'.
+Each element is (codepoint . nameString).
+The codepoint is an integer.
+The nameString is for documentation purposes.
+")
+
+(setq
+ xah-replace-invisible-char-list
+ '(
+   ;;
+
+   (65279 . "ZERO WIDTH NO-BREAK SPACE")
+   (8203 . "ZERO WIDTH SPACE")
+   (8206 . "LEFT-TO-RIGHT MARK")
+   (8207 . "RIGHT-TO-LEFT MARK")
+   (8232 . "LINE SEPARATOR")
+   (8233 . "PARAGRAPH SEPARATOR")
+   (8238 . "RIGHT-TO-LEFT OVERRIDE")
+   (8239 . "NARROW NO-BREAK SPACE")
+
+   (65532 . "OBJECT REPLACEMENT CHARACTER")
+   (65024 . "VARIATION SELECTOR-1")
+   (65025 . "VARIATION SELECTOR-2")
+   (65026 . "VARIATION SELECTOR-3")
+   (65027 . "VARIATION SELECTOR-4")
+   (65028 . "VARIATION SELECTOR-5")
+   (65029 . "VARIATION SELECTOR-6")
+   (65030 . "VARIATION SELECTOR-7")
+   (65031 . "VARIATION SELECTOR-8")
+   (65032 . "VARIATION SELECTOR-9")
+   (65033 . "VARIATION SELECTOR-10")
+   (65034 . "VARIATION SELECTOR-11")
+   (65035 . "VARIATION SELECTOR-12")
+   (65036 . "VARIATION SELECTOR-13")
+   (65037 . "VARIATION SELECTOR-14")
+   (65038 . "VARIATION SELECTOR-15")
+   (65039 . "VARIATION SELECTOR-16")))
+
+;; "\ufeff\\|\u200b\\|\u200f\\|\u202e\\|\u200e\\|\ufffc\\|\ufe0f"
+
+(defun xah-replace-invisible-char ()
+  "Query replace some invisible Unicode chars.
+The chars replaced are from `xah-replace-invisible-char-list'.
+
+Search begins at cursor position. (respects `narrow-to-region')
+
+When the command is done, call `exchange-point-and-mark' to go back to the original cursor position.
+
+URL `http://xahlee.info/emacs/emacs/elisp_unicode_replace_invisible_chars.html'
+Version: 2018-09-07 2023-06-22 2023-07-12"
+  (interactive)
+  (let ((case-replace nil)
+        (case-fold-search nil)
+        (xregex
+         (regexp-opt
+          (mapcar (lambda (x) (char-to-string (car x))) xah-replace-invisible-char-list))))
+    (push-mark)
+    (while (re-search-forward xregex nil t)
+      (let (xcharId xname)
+        (setq xcharId (string-to-char (match-string 0)))
+        (setq xname (get-char-code-property xcharId 'name))
+        (if (y-or-n-p
+             (format "found 「%s」 codepoint 「%s」, replace?" xname xcharId))
+            (replace-match "")
+          nil
+          ))))
+  (print "Done replace invisible chars or none."))
+#+end_src
+
+
 * Conclusion
 Go through [[https://github.com/emacs-lsp/lsp-java#supported-commands][Supported commands]] section of lsp-java github page to see commands provided in lsp-mode. Most of these commands are available under lsp's ~C-c l~ option. I hope this configuration file was useful.
